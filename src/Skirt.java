@@ -4,7 +4,7 @@ public class Skirt {
     private int id;
     private String name;
     private String size;                // small, medium
-    private int price;                  // 699 kr
+    private int price;                  // 599 kr - 799 kr
     private String material;            // jeans, skinn
     private String color;               // svart, vit
     private String waistline;           // låg midja, standard midja, hög midja

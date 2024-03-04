@@ -4,7 +4,7 @@ public class TShirt {
     private int id;
     private String name;
     private String size;                // medium, large
-    private int price;                  // 299 kr
+    private int price;                  // 199 kr - 299 kr
     private String material;            // bomull, polyester
     private String color;               // grå, röd
     private String sleeves;             // kortärmad, långärmad, linne

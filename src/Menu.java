@@ -24,7 +24,7 @@ public class Menu {
 
     public void customerMeny() {
 
-/*        boolean correctCustomerInfo = false;
+        boolean correctCustomerInfo = false;
 
         while(!correctCustomerInfo) {
 
@@ -47,6 +47,7 @@ public class Menu {
                 System.out.print("Stämmer all information (j/n): ");
                 String infoAnswer = scanner.nextLine();
                 if (Objects.equals(infoAnswer, "j") || Objects.equals(infoAnswer, "J")) {
+                    customer.setId(CustomerController.getCustomerList().size() + 1);
                     CustomerController.addCustomer(customer);                                                   // Add customer to customerList
                     repeatQuestion = false;
                     correctCustomerInfo = true;
@@ -57,7 +58,7 @@ public class Menu {
                 }
             }
 
-        }*/
+        }
         orderMenu();
     }
 
@@ -287,12 +288,12 @@ public class Menu {
 
             lineBreak();
             System.out.println("Orderspecifikation:");
-            System.out.println("\n"+clothing);
-            System.out.println(clothingOption1);
-            System.out.println(clothingOption2);
-            System.out.println(clothingOption3);
-            System.out.println(clothingOption4);
-            System.out.println(clothingOption5);
+            System.out.println("\nKlädesplagg: " + clothing);
+            System.out.println("Material: " + clothingOption1);
+            System.out.println("Storlek: " + clothingOption2);
+            System.out.println("Färg: " + clothingOption3);
+            System.out.println("Övriga val: " + clothingOption4 + ", " + clothingOption5);
+            System.out.println("Pris: ");
             System.out.print("\nStämmer uppgifterna för din beställning (j/n)? ");
 
             while (repeatQuestion) {
@@ -320,6 +321,34 @@ public class Menu {
         }
     }
 
+    // Getters
+    public String getClothing() {
+        return clothing;
+    }
+
+    public String getClothingOption1() {
+        return clothingOption1;
+    }
+
+    public String getClothingOption2() {
+        return clothingOption2;
+    }
+
+    public String getClothingOption3() {
+        return clothingOption3;
+    }
+
+    public String getClothingOption4() {
+        return clothingOption4;
+    }
+
+    public String getClothingOption5() {
+        return clothingOption5;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
 }
 
 

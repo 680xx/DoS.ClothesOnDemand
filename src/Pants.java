@@ -4,7 +4,7 @@ public class Pants {
     private int id;
     private String name;
     private String size;                // medium, large
-    private int price;                  // 799 kr
+    private int price = 499;            // 499 kr - 799 kr
     private String material;            // jeans, tyg
     private String color;               // svart, blå
     private String fit;                 // regular fit, slim fit, relaxed fit
@@ -77,5 +77,10 @@ public class Pants {
 
     public void setLength(String length) {
         this.length = length;
+    }
+
+    @Override
+    public String toString() {
+        return "Pants{" + "id=" + id + ", name='" + name + '\'' + ", size='" + size + '\'' + ", price=" + price + ", material='" + material + '\'' + ", color='" + color + '\'' + ", fit='" + fit + '\'' + ", length='" + length + '\'' + '}';
     }
 }
