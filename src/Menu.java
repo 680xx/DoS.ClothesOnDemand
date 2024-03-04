@@ -5,12 +5,12 @@ public class Menu {
 
     private String customerAddress;
     private String customerZip;
-    private String choiceMaterial;
-    private String choiceSize;
-    private String choiceColor;
-    private int
-
-    private boolean orderMenuActive = true;
+    private String clothing;
+    private String clothingOption1;
+    private String clothingOption2;
+    private String clothingOption3;
+    private String clothingOption4;
+    private String clothingOption5;
 
     // Constructors
     public Menu() {
@@ -24,7 +24,7 @@ public class Menu {
 
     public void customerMeny() {
 
-        boolean correctCustomerInfo = false;
+/*        boolean correctCustomerInfo = false;
 
         while(!correctCustomerInfo) {
 
@@ -57,53 +57,270 @@ public class Menu {
                 }
             }
 
-        }
+        }*/
         orderMenu();
     }
 
     private void orderMenu() {
 
         Scanner scanner = new Scanner(System.in);
+        boolean orderMenuActive = true;
+
+        int orderChoice = 0;
 
         while (orderMenuActive) {
 
-            lineBreak();
-            System.out.println("Vilken typ av klädesplagg vill du beställa?\n");
-            System.out.println("1. Byxa");
-            System.out.println("2. Tröja");
-            System.out.println("3. Kjol");
-            System.out.println("\nAnge alternativ: ");
-            int clothesOption = scanner.nextInt();
+            boolean repeatQuestion = true;
 
-            switch (clothesOption) {
-                case 1: // Pants
-                    lineBreak();
-                    System.out.println("Vilket material vill du ha på din byxa?\n");
+            while (clothing == null) {
+
+                lineBreak();
+                System.out.println("Vilken typ av klädesplagg vill du beställa?\n");
+                System.out.println("1. Byxa");
+                System.out.println("2. Tröja");
+                System.out.println("3. Kjol");
+                System.out.print("\nAnge alternativ: ");
+                orderChoice = scanner.nextInt();
+                switch (orderChoice) {
+                    case 1: // Byxa
+                        clothing = "byxa";
+                        break;
+                    case 2: // Tröja
+                        clothing = "tröja";
+                        break;
+                    case 3: // Kjol
+                        clothing = "kjol";
+                        break;
+                    default:
+                        System.out.println("Felaktig inmatning.");
+                        break;
+                }
+            }
+
+            while (clothingOption1 == null) {
+
+                lineBreak();
+                System.out.println("Vilket material vill du ha på din " + clothing + "?\n");
+                if (Objects.equals(clothing, "byxa")) {
                     System.out.println("1. Jeans");
                     System.out.println("2. Tyg");
-                    System.out.println("\nAnge alternativ: ");
-                    int pantsMaterialChoose = scanner.nextInt();
-                    switch (pantsMaterialChoose) {
-                        case 1: // Jeans
-                            pantsMaterial = "Jeans";
-                        case 2: // Tyg
-                            pantsMaterial = "Tyg";
-                        default:
-                            System.out.println("Felaktigt alternativ.");
-                    }
+                } else if (Objects.equals(clothing, "tröja")) {
+                    System.out.println("1. Bomull");
+                    System.out.println("2. Polyester");
+                } else {
+                    System.out.println("1. Jeans");
+                    System.out.println("2. Skinn");
+                }
+                System.out.print("\nAnge alternativ: ");
+                orderChoice = scanner.nextInt();
 
+                switch (orderChoice) {
+                    case 1:
+                        if (Objects.equals(clothing, "byxa")) clothingOption1 = "jeans";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption1 = "bomull";
+                        else clothingOption1 = "jeans";
+                        break;
+                    case 2:
+                        if (Objects.equals(clothing, "byxa")) clothingOption1 = "tyg";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption1 = "polyester";
+                        else clothingOption1 = "skinn";
+                        break;
+                    default:
+                        System.out.println("Felaktig inmatning.");
+                        break;
+                }
+            }
 
-                case 2: // T-Shirt
+            while (clothingOption2 == null) {
 
-                case 3: // Skirt
+                lineBreak();
+                System.out.println("Vilken storlek vill du ha på din " + clothing + "?\n");
+                if (Objects.equals(clothing, "byxa")) {
+                    System.out.println("1. Medium");
+                    System.out.println("2. Large");
+                } else if (Objects.equals(clothing, "tröja")) {
+                    System.out.println("1. Medium");
+                    System.out.println("2. Large");
+                } else {
+                    System.out.println("1. Small");
+                    System.out.println("2. Medium");
+                }
+                System.out.print("\nAnge alternativ: ");
+                orderChoice = scanner.nextInt();
 
-                default:
-                    System.out.println("Felaktigt alternativ.");
+                switch (orderChoice) {
+                    case 1:
+                        if (Objects.equals(clothing, "byxa")) clothingOption2 = "medium";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption2 = "medium";
+                        else clothingOption2 = "small";
+                        break;
+                    case 2:
+                        if (Objects.equals(clothing, "byxa")) clothingOption2 = "large";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption2 = "large";
+                        else clothingOption2 = "medium";
+                        break;
+                    default:
+                        System.out.println("Felaktig inmatning.");
+                        break;
+                }
+            }
+
+            while (clothingOption3 == null) {
+
+                lineBreak();
+                System.out.println("Vilken färg vill du ha på din " + clothing + "?\n");
+                if (Objects.equals(clothing, "byxa")) {
+                    System.out.println("1. Svart");
+                    System.out.println("2. Blå");
+                } else if (Objects.equals(clothing, "tröja")) {
+                    System.out.println("1. Grå");
+                    System.out.println("2. Röd");
+                } else {
+                    System.out.println("1. Svart");
+                    System.out.println("2. Vit");
+                }
+                System.out.print("\nAnge alternativ: ");
+                orderChoice = scanner.nextInt();
+
+                switch (orderChoice) {
+                    case 1:
+                        if (Objects.equals(clothing, "byxa")) clothingOption3 = "svart";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption3 = "grå";
+                        else clothingOption3 = "svart";
+                        break;
+                    case 2:
+                        if (Objects.equals(clothing, "byxa")) clothingOption3 = "blå";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption3 = "röd";
+                        else clothingOption3 = "vit";
+                        break;
+                    default:
+                        System.out.println("Felaktig inmatning.");
+                        break;
+                }
+            }
+
+            while (clothingOption4 == null) {
+
+                lineBreak();
+                System.out.println("Vilken passform vill du ha på din " + clothing + "?\n");
+                if (Objects.equals(clothing, "byxa")) {
+                    System.out.println("1. Regular fit");
+                    System.out.println("2. Slim fit");
+                    System.out.println("3. Relaxed fit");
+                } else if (Objects.equals(clothing, "tröja")) {
+                    System.out.println("1. V-ringad");
+                    System.out.println("2. Rundhalsad");
+                    System.out.println("3. Polo");
+                } else {
+                    System.out.println("1. Låg midja");
+                    System.out.println("2. Standard midja");
+                    System.out.println("3. Hög midja");
+                }
+                System.out.print("\nAnge alternativ: ");
+                orderChoice = scanner.nextInt();
+
+                switch (orderChoice) {
+                    case 1:
+                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "regular fit";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption4 = "v-ringad";
+                        else clothingOption4 = "låg midja";
+                        break;
+                    case 2:
+                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "slim fit";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption4 = "rundhalsad";
+                        else clothingOption4 = "standard midja";
+                        break;
+                    case 3:
+                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "relaxed fit";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption4 = "polo";
+                        else clothingOption4 = "hög midja";
+                        break;
+                    default:
+                        System.out.println("Felaktig inmatning.");
+                        break;
+                }
+            }
+
+            while (clothingOption5 == null) {
+
+                lineBreak();
+                if (Objects.equals(clothing, "byxa")) {
+                    System.out.println("Vilken längd vill du ha på din " + clothing + "?\n");
+                    System.out.println("1. Shorts");
+                    System.out.println("2. Trekvarts");
+                    System.out.println("3. Standard");
+                } else if (Objects.equals(clothing, "tröja")) {
+                    System.out.println("Vilken ärmlängd vill du ha på din " + clothing + "?\n");
+                    System.out.println("1. Kortärmad");
+                    System.out.println("2. Långärmad");
+                    System.out.println("3. Linne");
+                } else {
+                    System.out.println("Vilken modell vill du ha på din " + clothing + "?\n");
+                    System.out.println("1. Rak");
+                    System.out.println("2. A-linje");
+                    System.out.println("3. Volang");
+                }
+                System.out.print("\nAnge alternativ: ");
+                orderChoice = scanner.nextInt();
+
+                switch (orderChoice) {
+                    case 1:
+                        if (Objects.equals(clothing, "byxa")) clothingOption5 = "shorts";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption5 = "kortärmad";
+                        else clothingOption5 = "rak";
+                        break;
+                    case 2:
+                        if (Objects.equals(clothing, "byxa")) clothingOption5 = "trekvarts";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption5 = "långärmad";
+                        else clothingOption5 = "a-linje";
+                        break;
+                    case 3:
+                        if (Objects.equals(clothing, "byxa")) clothingOption5 = "standard";
+                        else if (Objects.equals(clothing, "tröja")) clothingOption5 = "linne";
+                        else clothingOption5 = "volang";
+                        break;
+                    default:
+                        System.out.println("Felaktig inmatning.");
+                        break;
+                }
+            }
+
+            lineBreak();
+            System.out.println("Orderspecifikation:");
+            System.out.println("\n"+clothing);
+            System.out.println(clothingOption1);
+            System.out.println(clothingOption2);
+            System.out.println(clothingOption3);
+            System.out.println(clothingOption4);
+            System.out.println(clothingOption5);
+            System.out.print("\nStämmer uppgifterna för din beställning (j/n)? ");
+
+            while (repeatQuestion) {
+                Scanner scanner1 = new Scanner(System.in);
+                String infoAnswer = scanner1.nextLine();
+                if (Objects.equals(infoAnswer, "j") || Objects.equals(infoAnswer, "J")) {
+                    repeatQuestion = false;
+                    orderMenuActive = false;
+                    break;
+                } else if (Objects.equals(infoAnswer, "n") || Objects.equals(infoAnswer, "N")) {
+                    clothing = null;
+                    clothingOption1 = null;
+                    clothingOption2 = null;
+                    clothingOption3 = null;
+                    clothingOption4 = null;
+                    clothingOption5 = null;
+                    repeatQuestion = false;
+                    break;
+                } else {
+                    System.out.println("Felaktig inmatning.");
+                    break;
+                }
             }
 
         }
     }
 
 }
+
 
 
