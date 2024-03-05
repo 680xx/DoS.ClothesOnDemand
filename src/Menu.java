@@ -240,17 +240,17 @@ public class Menu {
 
                 switch (orderChoice) {
                     case 1:
-                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "regular fit";
+                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "regular";
                         else if (Objects.equals(clothing, "tröja")) clothingOption4 = "v-ringad";
                         else clothingOption4 = "låg midja";
                         break;
                     case 2:
-                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "slim fit";
+                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "slim";
                         else if (Objects.equals(clothing, "tröja")) clothingOption4 = "rundhalsad";
                         else clothingOption4 = "standard midja";
                         break;
                     case 3:
-                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "relaxed fit";
+                        if (Objects.equals(clothing, "byxa")) clothingOption4 = "relaxed";
                         else if (Objects.equals(clothing, "tröja")) clothingOption4 = "polo";
                         else clothingOption4 = "hög midja";
                         break;

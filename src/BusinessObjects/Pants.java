@@ -12,7 +12,7 @@ public class Pants {
     private int price;                      // 499 kr - 799 kr
     private String material;                // jeans, tyg
     private String color;                   // svart, blå
-    private String fit;                     // regular fit, slim fit, relaxed fit
+    private String fit;                     // regular, slim, relaxed
     private String length;                  // shorts, trekvarts, standard
     private boolean workStarted = false;
     private boolean workCompleted = false;
@@ -100,7 +100,7 @@ public class Pants {
         boolean oldWorkStarted = this.workStarted;
         this.workStarted = workStarted;
 
-        this.propertyChangeSupport.firePropertyChange("plagg tillverkas", oldWorkStarted, this.workStarted);
+        this.propertyChangeSupport.firePropertyChange("plagget har börjat tillverkas.", oldWorkStarted, this.workStarted);
     }
 
     public boolean isWorkCompleted() {
@@ -111,7 +111,7 @@ public class Pants {
         boolean oldWorkCompleted = this.workCompleted;
         this.workCompleted = workCompleted;
 
-        this.propertyChangeSupport.firePropertyChange("plagg är klar", oldWorkCompleted, this.workCompleted);
+        this.propertyChangeSupport.firePropertyChange("plagget är klart.", oldWorkCompleted, this.workCompleted);
     }
 
     @Override

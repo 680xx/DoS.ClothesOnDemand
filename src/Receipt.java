@@ -2,13 +2,12 @@ import BusinessObjects.Customer;
 import BusinessObjects.Pants;
 import BusinessObjects.Skirt;
 import BusinessObjects.TShirt;
-
 import java.util.ArrayList;
 
 public class Receipt {
 
-    ArrayList orderList = OrderController.getOrderList();
-    ArrayList<Customer> customerList = CustomerController.getCustomerList();
+    private ArrayList<Object> orderList = OrderController.getOrderList();
+    private ArrayList<Customer> customerList = CustomerController.getCustomerList();
 
     public void printReceipt() {
 

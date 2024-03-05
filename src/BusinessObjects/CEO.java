@@ -4,7 +4,7 @@ public class CEO {
 
     // Attributes
     private int id = 1;
-    private String name = "Tomas Wigell";
+    private static String name = "Tomas Wigell";
 
     // Constructors
     public CEO() {
@@ -19,7 +19,7 @@ public class CEO {
         this.id = id;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 

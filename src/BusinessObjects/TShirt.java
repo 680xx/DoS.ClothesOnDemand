@@ -100,7 +100,7 @@ public class TShirt {
         boolean oldWorkStarted = this.workStarted;
         this.workStarted = workStarted;
 
-        this.propertyChangeSupport.firePropertyChange("plagg tillverkas", oldWorkStarted, this.workStarted);
+        this.propertyChangeSupport.firePropertyChange("plagget har börjat tillverkas.", oldWorkStarted, this.workStarted);
     }
 
     public boolean isWorkCompleted() {
@@ -111,7 +111,7 @@ public class TShirt {
         boolean oldWorkCompleted = this.workCompleted;
         this.workCompleted = workCompleted;
 
-        this.propertyChangeSupport.firePropertyChange("plagg är klar", oldWorkCompleted, this.workCompleted);
+        this.propertyChangeSupport.firePropertyChange("plagget är klart.", oldWorkCompleted, this.workCompleted);
     }
 
     @Override
