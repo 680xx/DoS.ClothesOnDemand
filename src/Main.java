@@ -1,9 +1,5 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
-
-        ArrayList<Customer> customerList = CustomerController.getCustomerList();
 
         Menu menu = new Menu();
         menu.customerMeny();
@@ -11,7 +7,7 @@ public class Main {
         OrderController orderController = new OrderController();
         orderController.builderPattern(menu);
 
-
+        System.out.println(OrderController.getOrderList().getLast());
 
     }
 }

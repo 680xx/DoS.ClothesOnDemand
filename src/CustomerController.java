@@ -1,3 +1,5 @@
+import BusinessObjects.Customer;
+
 import java.util.ArrayList;
 
 public class CustomerController {

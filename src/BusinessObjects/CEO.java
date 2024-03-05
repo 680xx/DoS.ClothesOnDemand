@@ -1,14 +1,16 @@
+package BusinessObjects;
+
 public class CEO {
 
     // Attributes
-    private int id;
-    private String name;
+    private int id = 1;
+    private String name = "Tomas Wigell";
 
     // Constructors
     public CEO() {
     }
 
-    // Getter & Setters
+    // Getter
     public int getId() {
         return id;
     }

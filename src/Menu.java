@@ -1,3 +1,5 @@
+import BusinessObjects.Customer;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -91,9 +93,11 @@ public class Menu {
                         break;
                     case 2: // Tröja
                         clothing = "tröja";
+                        clothingPrice = 199;
                         break;
                     case 3: // Kjol
                         clothing = "kjol";
+                        clothingPrice = 599;
                         break;
                     default:
                         System.out.println("Felaktig inmatning.");
@@ -109,11 +113,11 @@ public class Menu {
                     System.out.println("1. Jeans");
                     System.out.println("2. Tyg (+100 kr)");
                 } else if (Objects.equals(clothing, "tröja")) {
-                    System.out.println("1. Bomull");
+                    System.out.println("1. Bomull (+50 kr)");
                     System.out.println("2. Polyester");
                 } else {
                     System.out.println("1. Jeans");
-                    System.out.println("2. Skinn");
+                    System.out.println("2. Skinn (+100 kr)");
                 }
                 System.out.print("\nAnge alternativ: ");
                 orderChoice = scanner.nextInt();
@@ -124,6 +128,7 @@ public class Menu {
                             clothingOption1 = "jeans";
                         } else if (Objects.equals(clothing, "tröja")) {
                             clothingOption1 = "bomull";
+                            clothingPrice += 50;
                         } else clothingOption1 = "jeans"; {
                         }
                     break;
@@ -136,6 +141,7 @@ public class Menu {
                             clothingOption1 = "polyester";
                         }
                         else clothingOption1 = "skinn"; {
+                            clothingPrice += 100;
                         }
                         break;
                     default:
@@ -264,14 +270,14 @@ public class Menu {
                     System.out.println("3. Standard (+100 kr)");
                 } else if (Objects.equals(clothing, "tröja")) {
                     System.out.println("Vilken ärmlängd vill du ha på din " + clothing + "?\n");
-                    System.out.println("1. Kortärmad");
-                    System.out.println("2. Långärmad");
+                    System.out.println("1. Kortärmad (+50 kr)");
+                    System.out.println("2. Långärmad (+100 kr)");
                     System.out.println("3. Linne");
                 } else {
                     System.out.println("Vilken modell vill du ha på din " + clothing + "?\n");
                     System.out.println("1. Rak");
-                    System.out.println("2. A-linje");
-                    System.out.println("3. Volang");
+                    System.out.println("2. A-linje (+100 kr)");
+                    System.out.println("3. Volang (+100 kr)");
                 }
                 System.out.print("\nAnge alternativ: ");
                 orderChoice = scanner.nextInt();
@@ -283,6 +289,7 @@ public class Menu {
                         }
                         else if (Objects.equals(clothing, "tröja")) {
                             clothingOption5 = "kortärmad";
+                            clothingPrice += 50;
                         }
                         else clothingOption5 = "rak"; {
                         }
@@ -294,8 +301,11 @@ public class Menu {
                         }
                         else if (Objects.equals(clothing, "tröja")) {
                             clothingOption5 = "långärmad";
+                            clothingPrice += 100;
                         }
-                        else clothingOption5 = "a-linje"; {
+                        else {
+                            clothingOption5 = "a-linje";
+                            clothingPrice += 100;
                         }
                         break;
                     case 3:
@@ -306,7 +316,9 @@ public class Menu {
                         else if (Objects.equals(clothing, "tröja")) {
                             clothingOption5 = "linne";
                         }
-                        else clothingOption5 = "volang"; {
+                        else {
+                            clothingOption5 = "volang";
+                            clothingPrice += 100;
                         }
                         break;
                     default:
@@ -328,8 +340,8 @@ public class Menu {
             while (repeatQuestion) {
                 Scanner scanner1 = new Scanner(System.in);
                 String infoAnswer = scanner1.nextLine();
+
                 if (Objects.equals(infoAnswer, "j") || Objects.equals(infoAnswer, "J")) {
-                    repeatQuestion = false;
                     orderMenuActive = false;
                     break;
                 } else if (Objects.equals(infoAnswer, "n") || Objects.equals(infoAnswer, "N")) {
@@ -339,7 +351,6 @@ public class Menu {
                     clothingOption3 = null;
                     clothingOption4 = null;
                     clothingOption5 = null;
-                    repeatQuestion = false;
                     break;
                 } else {
                     System.out.println("Felaktig inmatning.");

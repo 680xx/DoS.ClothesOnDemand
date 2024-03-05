@@ -1,3 +1,5 @@
+import BusinessObjects.*;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -25,9 +27,32 @@ public class OrderController {
 
 
         } else if (Objects.equals(menu.getClothing(), "tröja")) {
+            TShirtBuilder builder = new TShirtBuilder();
+            TShirt tshirt = builder
+                    .setMaterial(menu.getClothingOption1())
+                    .setSize(menu.getClothingOption2())
+                    .setColor(menu.getClothingOption3())
+                    .build();
+
+                    tshirt.setId(orderList.size()+1);
+                    tshirt.setName(menu.getClothingOption3() + " " + menu.getClothing());
+                    tshirt.setPrice(menu.getClothingPrice());
+
+                    orderList.add(tshirt);
 
         } else {
+            SkirtBuilder builder = new SkirtBuilder();
+            Skirt skirt = builder
+                    .setMaterial(menu.getClothingOption1())
+                    .setSize(menu.getClothingOption2())
+                    .setColor(menu.getClothingOption3())
+                    .build();
 
+            skirt.setId(orderList.size()+1);
+            skirt.setName(menu.getClothingOption3() + " " + menu.getClothing());
+            skirt.setPrice(menu.getClothingPrice());
+
+            orderList.add(skirt);
         }
     }
 

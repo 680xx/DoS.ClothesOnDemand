@@ -1,3 +1,5 @@
+import BusinessObjects.Pants;
+
 public class PantsBuilder {
 
     private Pants pants = new Pants();

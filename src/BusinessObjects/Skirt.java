@@ -1,3 +1,5 @@
+package BusinessObjects;
+
 public class Skirt {
 
     // Attributes
@@ -77,5 +79,10 @@ public class Skirt {
 
     public void setPattern(String pattern) {
         this.pattern = pattern;
+    }
+
+    @Override
+    public String toString() {
+        return "Skirt{" + "id=" + id + ", name='" + name + '\'' + ", size='" + size + '\'' + ", price=" + price + ", material='" + material + '\'' + ", color='" + color + '\'' + ", waistline='" + waistline + '\'' + ", pattern='" + pattern + '\'' + '}';
     }
 }

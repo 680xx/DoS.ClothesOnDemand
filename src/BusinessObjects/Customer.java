@@ -1,3 +1,5 @@
+package BusinessObjects;
+
 public class Customer {
 
     // Attributes

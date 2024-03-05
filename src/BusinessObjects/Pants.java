@@ -1,17 +1,19 @@
-public class TShirt {
+package BusinessObjects;
+
+public class Pants {
 
     // Attributes
     private int id;
     private String name;
     private String size;                // medium, large
-    private int price;                  // 199 kr - 299 kr
-    private String material;            // bomull, polyester
-    private String color;               // grå, röd
-    private String sleeves;             // kortärmad, långärmad, linne
-    private String neck;                // v-ringad, rundhalsad, polo
+    private int price;            // 499 kr - 799 kr
+    private String material;            // jeans, tyg
+    private String color;               // svart, blå
+    private String fit;                 // regular fit, slim fit, relaxed fit
+    private String length;              // shorts, trekvarts, standard
 
     // Constructors
-    public TShirt() {
+    public Pants() {
     }
 
     // Getter & Setters
@@ -63,19 +65,24 @@ public class TShirt {
         this.color = color;
     }
 
-    public String getSleeves() {
-        return sleeves;
+    public String getFit() {
+        return fit;
     }
 
-    public void setSleeves(String sleeves) {
-        this.sleeves = sleeves;
+    public void setFit(String fit) {
+        this.fit = fit;
     }
 
-    public String getNeck() {
-        return neck;
+    public String getLength() {
+        return length;
     }
 
-    public void setNeck(String neck) {
-        this.neck = neck;
+    public void setLength(String length) {
+        this.length = length;
+    }
+
+    @Override
+    public String toString() {
+        return "Pants{" + "id=" + id + ", name='" + name + '\'' + ", size='" + size + '\'' + ", price=" + price + ", material='" + material + '\'' + ", color='" + color + '\'' + ", fit='" + fit + '\'' + ", length='" + length + '\'' + '}';
     }
 }

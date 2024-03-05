@@ -1,17 +1,19 @@
-public class Pants {
+package BusinessObjects;
+
+public class TShirt {
 
     // Attributes
     private int id;
     private String name;
     private String size;                // medium, large
-    private int price = 499;            // 499 kr - 799 kr
-    private String material;            // jeans, tyg
-    private String color;               // svart, blå
-    private String fit;                 // regular fit, slim fit, relaxed fit
-    private String length;              // shorts, trekvarts, standard
+    private int price;                  // 199 kr - 349 kr
+    private String material;            // bomull, polyester
+    private String color;               // grå, röd
+    private String sleeves;             // kortärmad, långärmad, linne
+    private String neck;                // v-ringad, rundhalsad, polo
 
     // Constructors
-    public Pants() {
+    public TShirt() {
     }
 
     // Getter & Setters
@@ -63,24 +65,24 @@ public class Pants {
         this.color = color;
     }
 
-    public String getFit() {
-        return fit;
+    public String getSleeves() {
+        return sleeves;
     }
 
-    public void setFit(String fit) {
-        this.fit = fit;
+    public void setSleeves(String sleeves) {
+        this.sleeves = sleeves;
     }
 
-    public String getLength() {
-        return length;
+    public String getNeck() {
+        return neck;
     }
 
-    public void setLength(String length) {
-        this.length = length;
+    public void setNeck(String neck) {
+        this.neck = neck;
     }
 
     @Override
     public String toString() {
-        return "Pants{" + "id=" + id + ", name='" + name + '\'' + ", size='" + size + '\'' + ", price=" + price + ", material='" + material + '\'' + ", color='" + color + '\'' + ", fit='" + fit + '\'' + ", length='" + length + '\'' + '}';
+        return "TShirt{" + "id=" + id + ", name='" + name + '\'' + ", size='" + size + '\'' + ", price=" + price + ", material='" + material + '\'' + ", color='" + color + '\'' + ", sleeves='" + sleeves + '\'' + ", neck='" + neck + '\'' + '}';
     }
 }
