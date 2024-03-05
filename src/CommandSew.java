@@ -1,8 +1,8 @@
-package Commands;
+public class CommandSew implements Command {
 
-public class Cut implements Command {
     @Override
     public Object process(Object input) {
+
         return null;
     }
 }

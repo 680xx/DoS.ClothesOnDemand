@@ -1,19 +1,30 @@
 package BusinessObjects;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class TShirt {
 
     // Attributes
     private int id;
     private String name;
-    private String size;                // medium, large
-    private int price;                  // 199 kr - 349 kr
-    private String material;            // bomull, polyester
-    private String color;               // grå, röd
-    private String sleeves;             // kortärmad, långärmad, linne
-    private String neck;                // v-ringad, rundhalsad, polo
+    private String size;                         // medium, large
+    private int price;                           // 199 kr - 349 kr
+    private String material;                     // bomull, polyester
+    private String color;                        // grå, röd
+    private String sleeves;                      // kortärmad, långärmad, linne
+    private String neck;                         // v-ringad, rundhalsad, polo
+    private boolean workStarted = false;
+    private boolean workCompleted = false;
+    private PropertyChangeSupport propertyChangeSupport;
 
     // Constructors
     public TShirt() {
+        this.propertyChangeSupport = new PropertyChangeSupport(this);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.addPropertyChangeListener(listener);
     }
 
     // Getter & Setters
@@ -79,6 +90,28 @@ public class TShirt {
 
     public void setNeck(String neck) {
         this.neck = neck;
+    }
+
+    public boolean isWorkStarted() {
+        return workStarted;
+    }
+
+    public void setWorkStarted(boolean workStarted) {
+        boolean oldWorkStarted = this.workStarted;
+        this.workStarted = workStarted;
+
+        this.propertyChangeSupport.firePropertyChange("plagg tillverkas", oldWorkStarted, this.workStarted);
+    }
+
+    public boolean isWorkCompleted() {
+        return workCompleted;
+    }
+
+    public void setWorkCompleted(boolean workCompleted) {
+        boolean oldWorkCompleted = this.workCompleted;
+        this.workCompleted = workCompleted;
+
+        this.propertyChangeSupport.firePropertyChange("plagg är klar", oldWorkCompleted, this.workCompleted);
     }
 
     @Override

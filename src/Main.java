@@ -7,7 +7,8 @@ public class Main {
         OrderController orderController = new OrderController();
         orderController.builderPattern(menu);
 
-        System.out.println(OrderController.getOrderList().getLast());
+        Receipt receipt = new Receipt();
+        receipt.printReceipt();
 
     }
 }

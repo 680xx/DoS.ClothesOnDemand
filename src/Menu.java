@@ -28,7 +28,7 @@ public class Menu {
 
     public void customerMeny() {
 
-/*        boolean correctCustomerInfo = false;
+        boolean correctCustomerInfo = false;
 
         while(!correctCustomerInfo) {
 
@@ -62,7 +62,7 @@ public class Menu {
                 }
             }
 
-        }*/
+        }
         orderMenu();
     }
 
