@@ -2,8 +2,6 @@ public class PantsBuilder {
 
     private Pants pants = new Pants();
 
-
-
     public PantsBuilder setSize(String size) {
         pants.setSize(size);
         return this;
