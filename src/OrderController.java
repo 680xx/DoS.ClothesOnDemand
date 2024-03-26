@@ -1,6 +1,7 @@
 import BusinessObjects.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class OrderController {
@@ -13,7 +14,9 @@ public class OrderController {
 
     public void builderPattern(Menu menu) {
 
-        if (Objects.equals(menu.getClothing(), "byxa")) {
+        List<Command> commandPipeline = new ArrayList<>();
+
+        if (Objects.equals(menu.getClothing(), "byxa")) {    // Patterns for trousers
             Pants pants = new Pants();
             PantsObserver pantsObserver = new PantsObserver();
             pants.addPropertyChangeListener(pantsObserver);
@@ -30,31 +33,32 @@ public class OrderController {
                     pants.setName(menu.getClothing());
                     pants.setPrice(menu.getClothingPrice());
 
-                    if (Objects.equals(menu.getClothingOption4(), "regular")) {
-                        Command pantsCommand = new CommandSewPants(pants, "regular fit");
-                        new CommandInvoker().executeCommand(pantsCommand);
-                    } else if (Objects.equals(menu.getClothingOption4(), "slim")) {
-                        Command pantsCommand = new CommandSewPants(pants, "slim fit");
-                        new CommandInvoker().executeCommand(pantsCommand);
-                    } else {
-                        Command pantsCommand = new CommandSewPants(pants, "relaxed fit");
-                        new CommandInvoker().executeCommand(pantsCommand);
-                    }
-                    if (Objects.equals(menu.getClothingOption5(), "shorts")) {
-                        Command pantsCommand = new CommandCutPants(pants, "shorts");
-                        new CommandInvoker().executeCommand(pantsCommand);
-                    } else if (Objects.equals(menu.getClothingOption5(), "trekvarts")) {
-                        Command pantsCommand = new CommandCutPants(pants, "trekvarts");
-                        new CommandInvoker().executeCommand(pantsCommand);
-                    } else {
-                        Command pantsCommand = new CommandCutPants(pants, "Standard");
-                        new CommandInvoker().executeCommand(pantsCommand);
-                    }
+            if (Objects.equals(menu.getClothingOption4(), "regular")) {
+                commandPipeline.add(new CommandSewPants(pants, "regular fit"));
+            } else if (Objects.equals(menu.getClothingOption4(), "slim")) {
+                commandPipeline.add(new CommandSewPants(pants, "slim fit"));
+            } else {
+                commandPipeline.add(new CommandSewPants(pants, "relaxed fit"));
+            }
+
+            if (Objects.equals(menu.getClothingOption5(), "shorts")) {
+                commandPipeline.add(new CommandCutPants(pants, "shorts"));
+            } else if (Objects.equals(menu.getClothingOption5(), "trekvarts")) {
+                commandPipeline.add(new CommandCutPants(pants, "trekvarts"));
+            } else {
+                commandPipeline.add(new CommandCutPants(pants, "Standard"));
+            }
+
+            CommandInvoker commandInvoker = new CommandInvoker();
+            for (Command command : commandPipeline) {
+                commandInvoker.executeCommand(command);
+            }
+
                     pants.setWorkCompleted(true);
                     orderList.add(pants);
 
 
-        } else if (Objects.equals(menu.getClothing(), "tröja")) {
+        } else if (Objects.equals(menu.getClothing(), "tröja")) {    // Patterns for TShirt
             TShirt tshirt = new TShirt();
             TShirtObserver tshirtObserver = new TShirtObserver();
             tshirt.addPropertyChangeListener(tshirtObserver);
@@ -72,31 +76,32 @@ public class OrderController {
                     tshirt.setName(menu.getClothing());
                     tshirt.setPrice(menu.getClothingPrice());
 
-                    if (Objects.equals(menu.getClothingOption4(), "v-ringad")) {
-                        Command tshirtCommand = new CommandSewTShirt(tshirt, "v-ringad");
-                        new CommandInvoker().executeCommand(tshirtCommand);
-                    } else if (Objects.equals(menu.getClothingOption4(), "rundhalsad")) {
-                        Command tshirtCommand = new CommandSewTShirt(tshirt, "rundhalsad");
-                        new CommandInvoker().executeCommand(tshirtCommand);
-                    } else {
-                        Command pantsCommand = new CommandSewTShirt(tshirt, "polo");
-                        new CommandInvoker().executeCommand(pantsCommand);
-                    }
-                    if (Objects.equals(menu.getClothingOption5(), "kortärmad")) {
-                        Command tshirtCommand = new CommandCutTShirt(tshirt, "kortärmad");
-                        new CommandInvoker().executeCommand(tshirtCommand);
-                    } else if (Objects.equals(menu.getClothingOption5(), "långärmad")) {
-                        Command tshirtCommand = new CommandCutTShirt(tshirt, "långärmad");
-                        new CommandInvoker().executeCommand(tshirtCommand);
-                    } else {
-                        Command tshirtCommand = new CommandCutTShirt(tshirt, "linne");
-                        new CommandInvoker().executeCommand(tshirtCommand);
-                    }
+            if (Objects.equals(menu.getClothingOption4(), "v-ringad")) {
+                commandPipeline.add(new CommandSewTShirt(tshirt, "v-ringad"));
+            } else if (Objects.equals(menu.getClothingOption4(), "rundhalsad")) {
+                commandPipeline.add(new CommandSewTShirt(tshirt, "rundhalsad"));
+            } else {
+                commandPipeline.add(new CommandSewTShirt(tshirt, "polo"));
+            }
+
+            if (Objects.equals(menu.getClothingOption5(), "kortärmad")) {
+                commandPipeline.add(new CommandCutTShirt(tshirt, "kortärmad"));
+            } else if (Objects.equals(menu.getClothingOption5(), "långärmad")) {
+                commandPipeline.add(new CommandCutTShirt(tshirt, "långärmad"));
+            } else {
+                commandPipeline.add(new CommandCutTShirt(tshirt, "linne"));
+            }
+
+            CommandInvoker commandInvoker = new CommandInvoker();
+            for (Command command : commandPipeline) {
+                commandInvoker.executeCommand(command);
+            }
 
                     tshirt.setWorkCompleted(true);
                     orderList.add(tshirt);
 
-        } else {
+
+        } else {        // Patterns for Skirt
             Skirt skirt = new Skirt();
             SkirtObserver skirtObserver = new SkirtObserver();
             skirt.addPropertyChangeListener(skirtObserver);
@@ -115,24 +120,24 @@ public class OrderController {
                     skirt.setPrice(menu.getClothingPrice());
 
             if (Objects.equals(menu.getClothingOption4(), "låg midja")) {
-                Command skirtCommand = new CommandSewSkirt(skirt, "låg midja");
-                new CommandInvoker().executeCommand(skirtCommand);
+                commandPipeline.add(new CommandSewSkirt(skirt, "låg midja"));
             } else if (Objects.equals(menu.getClothingOption4(), "standard midja")) {
-                Command skirtCommand = new CommandSewSkirt(skirt, "standard midja");
-                new CommandInvoker().executeCommand(skirtCommand);
+                commandPipeline.add(new CommandSewSkirt(skirt, "standard midja"));
             } else {
-                Command skirtCommand = new CommandSewSkirt(skirt, "hög midja");
-                new CommandInvoker().executeCommand(skirtCommand);
+                commandPipeline.add(new CommandSewSkirt(skirt, "hög midja"));
             }
+
             if (Objects.equals(menu.getClothingOption5(), "rak")) {
-                Command skirtCommand = new CommandCutSkirt(skirt, "rak");
-                new CommandInvoker().executeCommand(skirtCommand);
+                commandPipeline.add(new CommandCutSkirt(skirt, "rak"));
             } else if (Objects.equals(menu.getClothingOption5(), "a-linje")) {
-                Command skirtCommand = new CommandCutSkirt(skirt, "a-linje");
-                new CommandInvoker().executeCommand(skirtCommand);
+                commandPipeline.add(new CommandCutSkirt(skirt, "a-linje"));
             } else {
-                Command skirtCommand = new CommandCutSkirt(skirt, "volang");
-                new CommandInvoker().executeCommand(skirtCommand);
+                commandPipeline.add(new CommandCutSkirt(skirt, "volang"));
+            }
+
+            CommandInvoker commandInvoker = new CommandInvoker();
+            for (Command command : commandPipeline) {
+                commandInvoker.executeCommand(command);
             }
 
                     skirt.setWorkCompleted(true);
